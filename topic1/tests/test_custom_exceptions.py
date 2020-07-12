@@ -29,10 +29,13 @@ class CustomExceptTest(unittest.TestCase):
    def test_custom_phone_number_attributes(self):
       self.assertEqual(self.Customer.phone_number, '123-333-7777')
 
-   def test_custom_invalid_attribute(self):
-        s = c.Customer('123', 'Johnson', 'Shawn', '123-333-7777')
-        with self.assertRaises(c.ValueError):
-            s.display('ABC')
+   #def test_custom_invalid_attribute(self):
+        #s = c.Customer('123', 'Johnson', 'Shawn', '123-333-7777')
+        #with self.assertRaises(c.ValueError):
+            #s.display('ABC')
+
+   def test_custom_exception_str(self):
+        self.assertEqual(c.Customer('123', 'Johnson', 'Mike', '515-123-4444').display(), 'Customer ID: 123'+ '\n'+'Mike Johnson'+'\n'+ '515-123-4444')
 
 
 if __name__ == '__main__':
