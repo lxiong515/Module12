@@ -3,20 +3,13 @@ Program: Customer.py
 Author:  Luke Xiong
 Date: 7/12/2020
 
-This program is a Customer class with exceptions
+This program is a Customer class with the following data members, which are identified as required or optional in the constructor.
+The class is simply the blueprint for creating objects and had methods that may or may not be used for that object.
+
 """
 class Customer:
     #constructor
-    def __init__(self, cid, last_name, first_name, phone_number=''):
-        name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
-        num_characters = set("1234567890-")
-        num1_characters = set('1234567890')
-        if not (name_characters.issuperset(last_name) and name_characters.issuperset(first_name)):
-            raise ValueError
-        if phone_number and not num_characters.issuperset(phone_number):
-            raise ValueError
-        if cid and not num1_characters.issuperset((cid)):
-            raise ValueError
+    def __init__(self, cid, last_name, first_name, phone_number):
         self.customer_id = cid
         self.last_name = last_name #last_name - required string
         self.first_name = first_name #first_name - required string
@@ -35,8 +28,8 @@ class Customer:
     #def get_address(self, address):
         #return self._address
 
-    #def get_phone(self, phone):
-        #return self._phone
+    def get_phone(self, phone):
+        return self._phone
     #setters
     def set_customer_id(self, cid):
         self.customer_id = cid
@@ -69,35 +62,15 @@ class Customer:
     def __repr__(self):
         return (self.customer_id, self.first_name, self.last_name, self.phone_number)
 
-class ValueError(Exception):
-    pass
-
 #driver
 if __name__=='__main__':
-    customer1 = Customer('123', 'Johnson', 'Mike', '515-123-4444')
+    customer1 = Customer(123, 'Johnson', 'Mike', '515-123-4444')
     print(customer1.display())
-
-try:
-    customer2 = Customer('12a', 'Johnson', 'Mike', '515-123-4444')
-    print(customer2.display())
-except ValueError:
-    print("Invalid Customer ID")
-try:
-    customer3 = Customer('123', '678', 'Mike', '515-123-4444')
-    print(customer3.display())
-except ValueError:
-    print("Invalid Last Name")
-try:
-    customer4 = Customer('123', 'Johnson', '789', '515-123-4444')
-    print(customer4.display())
-except ValueError:
-    print("Invalid First Name")
-try:
-    customer5 = Customer('324', 'Joe', 'Keri', '555-111-999P')
-    print(customer5.display())
-except ValueError:
-    print('Invalid Phone Number')
-
+    try:
+        customer2 = Customer('this should fail')
+        print(customer2.display())
+    except AttributeError:
+        print('Successfully errored out!')
 
 #Which method raised the exception? The constructor or the display()? Include in your comments which one!
 #the constructor caused the exception because it is missing the required arguments.

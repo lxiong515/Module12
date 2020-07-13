@@ -12,9 +12,14 @@ class Rider(ABC):
     def descript(self):
         pass
 
-class Bicycle(Rider):
+class InvalidSideError(Exception):
+    pass
 
-    def __init__(self):
+class Bicycle(Rider):
+    def __init__(self):#(self, bike):
+        #name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
+        #if not (name_characters.issuperset(bike)):
+            #raise InvalidSideError
         self.bike = ('Human powered, not enclosed' + '\n' + '1 or 2 if tandem or a daredevil')
 
     def descript(self):
@@ -25,7 +30,10 @@ class Bicycle(Rider):
 
 
 class Motorcycle(Rider):
-    def __init__(self):
+    def __init__(self):#(self, motorcycle):
+        #name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
+        #if not (name_characters.issuperset(motorcycle)):
+            #raise InvalidSideError
         self.motorcycle = ('Engine powered, not enclosed' +'\n'+'1 or 2')
 
     def descript(self):
@@ -36,7 +44,10 @@ class Motorcycle(Rider):
 
 
 class Car(Rider):
-    def __init__(self):
+    def __init__(self):#(self, car):
+        #name_characters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-")
+        #if not (name_characters.issuperset(car)):
+            #raise InvalidSideError
         self.car = ('Engine powered, enclosed'+'\n'+'1 plus comfortably')
 
     def descript(self):
